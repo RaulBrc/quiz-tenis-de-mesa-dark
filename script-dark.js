@@ -1,97 +1,42 @@
-const quizData = [
-  {
-    question: "Com que frequência você pratica tênis de mesa?",
-    options: [
-      { text: "Nunca joguei antes", points: 1 },
-      { text: "Jogo de vez em quando", points: 2 },
-      { text: "Treino regularmente", points: 3 }
-    ]
-  },
-  {
-    question: "Como você avaliaria seu controle de bola?",
-    options: [
-      { text: "Tenho dificuldade em manter a bola na mesa", points: 1 },
-      { text: "Consigo trocar algumas bolas", points: 2 },
-      { text: "Tenho ótimo controle e variação", points: 3 }
-    ]
-  },
-  {
-    question: "Você conhece as regras oficiais do esporte?",
-    options: [
-      { text: "Não conheço", points: 1 },
-      { text: "Conheço um pouco", points: 2 },
-      { text: "Sim, completamente", points: 3 }
-    ]
-  }
-];
+let total = 0;
+let current = 1;
+const totalQuestions = 5;
 
-let currentQuestion = 0;
-let score = 0;
+function nextQuestion(points){
+  total += points;
 
-const quiz = document.getElementById("quiz");
-const nextBtn = document.getElementById("next-btn");
+  const currentQuestion = document.getElementById(`q${current}`);
+  currentQuestion.classList.remove("active");
+  currentQuestion.classList.add("hidden");
 
-function loadQuestion() {
-  const current = quizData[currentQuestion];
-  quiz.innerHTML = `
-    <div class="question">${current.question}</div>
-    <div class="options">
-      ${current.options
-        .map(
-          (opt, i) =>
-            `<button class="option-btn" data-points="${opt.points}">${opt.text}</button>`
-        )
-        .join("")}
-    </div>
-  `;
-  nextBtn.classList.add("hidden");
+  current++;
 
-  document.querySelectorAll(".option-btn").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      score += parseInt(e.target.dataset.points);
-      document.querySelectorAll(".option-btn").forEach((b) => (b.disabled = true));
-      nextBtn.classList.remove("hidden");
-    });
-  });
-}
-
-nextBtn.addEventListener("click", () => {
-  currentQuestion++;
-  if (currentQuestion < quizData.length) {
-    loadQuestion();
-  } else {
+  if(current > totalQuestions){
     showResult();
-  }
-});
-
-function showResult() {
-  quiz.innerHTML = "";
-  nextBtn.classList.add("hidden");
-
-  let level = "";
-  let redirectUrl = "";
-
-  if (score <= 3) {
-    level = "Iniciante";
-    redirectUrl =
-      "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---iniciante---dark";
-  } else if (score <= 6) {
-    level = "Intermediário";
-    redirectUrl =
-      "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---intermedirio---dark";
   } else {
-    level = "Avançado";
-    redirectUrl =
-      "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---avanado---dark";
+    const nextQ = document.getElementById(`q${current}`);
+    nextQ.classList.remove("hidden");
+    nextQ.classList.add("active");
   }
-
-  quiz.innerHTML = `
-    <h2>Seu nível é: ${level} 🏓</h2>
-    <p>Confira o plano ideal para você clicando abaixo:</p>
-    <a href="${redirectUrl}" target="_blank">
-      <button id="plan-btn">Ver meu plano</button>
-    </a>
-  `;
 }
 
-loadQuestion();
+function showResult(){
+  document.getElementById("result").style.display = "block";
+
+  let resultText = "";
+  let planLink = "";
+
+  if(total <= 5){
+    resultText = "Nível Iniciante 🏓";
+    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---iniciante---dark";
+  } else if(total <= 10){
+    resultText = "Nível Intermediário 🧠";
+    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---intermedirio---dark";
+  } else{
+    resultText = "Nível Avançado 🚀";
+    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---avanado---dark";
+  }
+
+  document.getElementById("resultText").innerText = resultText;
+  document.getElementById("planButton").href = planLink;
+}

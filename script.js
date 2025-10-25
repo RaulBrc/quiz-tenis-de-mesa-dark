@@ -5,17 +5,17 @@ const totalQuestions = 5;
 function nextQuestion(points){
   total += points;
 
-  // Esconde a pergunta atual
   const currentQuestion = document.getElementById(`q${current}`);
   currentQuestion.classList.remove("active");
+  currentQuestion.classList.add("hidden");
 
   current++;
 
   if(current > totalQuestions){
     showResult();
   } else {
-    // Mostra a próxima pergunta
     const nextQ = document.getElementById(`q${current}`);
+    nextQ.classList.remove("hidden");
     nextQ.classList.add("active");
   }
 }

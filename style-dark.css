@@ -1,68 +1,75 @@
+/* Fundo geral do quiz */
 body {
-  background-color: #000;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.quiz-container {
-  background-color: #111;
-  border-radius: 15px;
-  padding: 30px;
-  width: 90%;
-  max-width: 500px;
+  background-color: #000000; /* fundo preto */
   text-align: center;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  padding: 80px 20px;
+  color: #ffffff; /* textos brancos */
+  font-family: Arial, sans-serif;
 }
 
-h1 {
-  font-size: 1.5rem;
+/* Título e descrição do quiz */
+h1, body > p:first-of-type {
+  color: #ffffff;
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
+/* Perguntas */
+p {
+  font-size: 22px;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+/* Perguntas */
 .question {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s ease;
 }
 
-.options button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  background-color: #333333;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.2s;
-}
-
-.options button:hover {
-  background-color: #444;
-}
-
-.hidden {
+.question.hidden {
+  opacity: 0;
   display: none;
 }
 
-#next-btn {
-  background-color: #333;
-  border: none;
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  margin-top: 15px;
+.question.active {
+  display: block;
+  opacity: 1;
 }
 
-#next-btn:hover {
-  background-color: #555;
+/* Botões (alternativas) */
+button {
+  display: block;
+  width: 250px;
+  margin: 25px auto;
+  padding: 20px 0;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  background-color: #333333; /* cinza escuro */
+  color: #ffffff;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #555555;
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* Resultado final */
+#result {
+  margin-top: 50px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Botão do resultado */
+a button {
+  margin-top: 30px;
 }

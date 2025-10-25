@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Tênis de Mesa - Modo Escuro</title>
+  <link rel="stylesheet" href="style-dark.css">
+</head>
+<body>
+  <h1>Teste seu nível no Tênis de Mesa 🏓</h1>
+  <p>Responda as perguntas e descubra seu nível!</p>
+
+  <!-- Perguntas -->
+  <div class="question" id="q1">
+    <p>1. Com que frequência você joga?</p>
+    <button onclick="nextQuestion(1)">Nunca</button>
+    <button onclick="nextQuestion(2)">Às vezes</button>
+    <button onclick="nextQuestion(3)">Frequentemente</button>
+  </div>
+
+  <div class="question" id="q2" style="display:none;">
+    <p>2. Você já participou de torneios?</p>
+    <button onclick="nextQuestion(1)">Nunca</button>
+    <button onclick="nextQuestion(2)">Amistosos</button>
+    <button onclick="nextQuestion(3)">Oficiais</button>
+  </div>
+
+  <div class="question" id="q3" style="display:none;">
+    <p>3. Você treina golpes específicos (saques, spins, etc)?</p>
+    <button onclick="nextQuestion(1)">Não</button>
+    <button onclick="nextQuestion(2)">Às vezes</button>
+    <button onclick="nextQuestion(3)">Sim</button>
+  </div>
+
+  <div class="question" id="q4" style="display:none;">
+    <p>4. Você costuma vencer jogadores mais experientes?</p>
+    <button onclick="nextQuestion(1)">Quase nunca</button>
+    <button onclick="nextQuestion(2)">Às vezes</button>
+    <button onclick="nextQuestion(3)">Frequentemente</button>
+  </div>
+
+  <div class="question" id="q5" style="display:none;">
+    <p>5. Quanto tempo você treina por semana?</p>
+    <button onclick="nextQuestion(1)">Menos de 1h</button>
+    <button onclick="nextQuestion(2)">1–3h</button>
+    <button onclick="nextQuestion(3)">Mais de 3h</button>
+  </div>
+
+  <!-- Resultado final -->
+  <div id="result" style="display:none;">
+    <p id="resultText"></p>
+    <a id="planButton" href="#" target="_blank"><button>Ver Plano Recomendado</button></a>
+  </div>
+
+  <script src="script-dark.js"></script>
+</body>
+</html>

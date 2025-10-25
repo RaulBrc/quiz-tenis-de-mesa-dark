@@ -1,70 +1,13 @@
-/* Fundo geral do quiz */
+/* Fonte normal */
 body {
-  background-color: #000000; /* fundo preto */
+  background-color: #000000;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
   text-align: center;
-  padding: 80px 20px;
-  color: #ffffff; /* textos brancos */
-  font-family: Arial, sans-serif; /* fonte normal */
 }
 
-/* Título e descrição do quiz */
+/* Título e descrição */
 h1, body > p:first-of-type {
-  color: #ffffff;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-/* Perguntas */
-p {
-  font-size: 22px;
-  margin-bottom: 30px;
-  color: #ffffff; /* branco */
-}
-
-/* Perguntas escondidas suavemente */
-.question {
-  transition: opacity 0.5s ease;
-}
-
-.question.hidden {
-  opacity: 0;
-  display: none;
-}
-
-/* Botões (alternativas) */
-button {
-  display: block;
-  width: 250px;
-  margin: 25px auto;
-  padding: 20px 0;
-  font-size: 20px;
-  cursor: pointer;
-  border: none;
-  border-radius: 12px;
-  background-color: #333333; /* cinza escuro */
-  color: #ffffff; /* texto branco */
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background-color: #555555; /* cinza mais claro no hover */
-  transform: scale(1.05);
-}
-
-button:focus {
-  outline: 3px solid #ffffff; /* contorno branco */
-  outline-offset: 3px;
-}
-
-/* Resultado final */
-#result {
-  margin-top: 50px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-/* Botão do resultado */
-a button {
-  margin-top: 30px;
-}
+  font-size: 28px

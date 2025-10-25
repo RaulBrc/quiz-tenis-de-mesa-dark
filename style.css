@@ -1,77 +1,58 @@
 /* Fundo geral do quiz */
 body {
-  margin: 0;
-  padding: 0;
   background-color: #000000; /* fundo preto */
-  font-family: Arial, sans-serif; /* fonte normal */
-  color: #ffffff;
-  height: 100vh;
-  overflow: hidden; /* remove rolagem */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Container do quiz */
-.quiz-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-/* Título e descrição */
-h1, .intro-text {
   text-align: center;
+  padding: 80px 20px;
+  color: #ffffff; /* textos brancos */
+  font-family: Arial, sans-serif;
+}
+
+/* Título e descrição do quiz */
+h1, body > p:first-of-type {
+  color: #ffffff;
   font-size: 28px;
   margin-bottom: 20px;
+}
+
+/* Perguntas */
+p {
+  font-size: 22px;
+  margin-bottom: 30px;
   color: #ffffff;
 }
 
 /* Perguntas */
 .question {
-  display: none; /* escondida por padrão */
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 40px 20px;
-  box-sizing: border-box;
-  text-align: center;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.question.hidden {
+  opacity: 0;
+  display: none;
 }
 
 .question.active {
-  display: flex; /* apenas a pergunta ativa aparece */
+  display: block;
+  opacity: 1;
 }
 
-/* Texto da pergunta */
-.question p {
-  font-size: 22px;
-  margin-bottom: 40px;
-  color: #ffffff;
-}
-
-/* Botões das alternativas */
+/* Botões (alternativas) */
 button {
+  display: block;
   width: 250px;
-  margin: 15px 0;
+  margin: 25px auto;
   padding: 20px 0;
   font-size: 20px;
   cursor: pointer;
   border: none;
   border-radius: 12px;
   background-color: #333333; /* cinza escuro */
-  color: #ffffff; /* texto branco */
+  color: #ffffff;
   transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #555555; /* cinza mais claro no hover */
+  background-color: #555555;
   transform: scale(1.05);
 }
 
@@ -82,19 +63,13 @@ button:focus {
 
 /* Resultado final */
 #result {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
+  margin-top: 50px;
   font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
 }
 
-#result button {
+/* Botão do resultado */
+a button {
   margin-top: 30px;
 }

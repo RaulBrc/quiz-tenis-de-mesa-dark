@@ -6,6 +6,7 @@ function nextQuestion(points){
   total += points;
 
   const currentQuestion = document.getElementById(`q${current}`);
+  currentQuestion.classList.remove("active");
   currentQuestion.classList.add("hidden");
 
   current++;
@@ -14,8 +15,8 @@ function nextQuestion(points){
     showResult();
   } else {
     const nextQ = document.getElementById(`q${current}`);
-    nextQ.style.display = "block";
-    setTimeout(() => nextQ.classList.remove("hidden"), 10);
+    nextQ.classList.remove("hidden");
+    nextQ.classList.add("active");
   }
 }
 
@@ -27,13 +28,13 @@ function showResult(){
 
   if(total <= 5){
     resultText = "Nível Iniciante 🏓";
-    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/#pacotes-iniciante";
+    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---iniciante---dark";
   } else if(total <= 10){
     resultText = "Nível Intermediário 🧠";
-    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---intermedirio";
+    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---intermedirio---dark";
   } else{
     resultText = "Nível Avançado 🚀";
-    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---avanado";
+    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---avanado---dark";
   }
 
   document.getElementById("resultText").innerText = resultText;

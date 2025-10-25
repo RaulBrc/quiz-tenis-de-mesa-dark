@@ -1,42 +1,40 @@
-let total = 0;
-let current = 1;
+let currentQuestion = 1;
+let totalScore = 0;
 const totalQuestions = 5;
 
-function nextQuestion(points){
-  total += points;
+function nextQuestion(score) {
+  totalScore += score;
 
-  const currentQuestion = document.getElementById(`q${current}`);
-  currentQuestion.classList.remove("active");
-  currentQuestion.classList.add("hidden");
+  // Esconde a pergunta atual
+  document.getElementById(`q${currentQuestion}`).style.display = "none";
+  
+  // Vai pra próxima pergunta
+  currentQuestion++;
 
-  current++;
-
-  if(current > totalQuestions){
-    showResult();
+  // Se ainda há perguntas, mostra a próxima
+  if (currentQuestion <= totalQuestions) {
+    document.getElementById(`q${currentQuestion}`).style.display = "block";
   } else {
-    const nextQ = document.getElementById(`q${current}`);
-    nextQ.classList.remove("hidden");
-    nextQ.classList.add("active");
+    showResult();
   }
 }
 
-function showResult(){
-  document.getElementById("result").style.display = "block";
+function showResult() {
+  const resultDiv = document.getElementById("result");
+  const resultText = document.getElementById("resultText");
+  const planButton = document.getElementById("planButton");
 
-  let resultText = "";
-  let planLink = "";
+  resultDiv.style.display = "block";
 
-  if(total <= 5){
-    resultText = "Nível Iniciante 🏓";
-    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---iniciante---dark";
-  } else if(total <= 10){
-    resultText = "Nível Intermediário 🧠";
-    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---intermedirio---dark";
-  } else{
-    resultText = "Nível Avançado 🚀";
-    planLink = "https://vestuarioaxel.my.canva.site/spinzonetenisdemesa/pacotes---avanado---dark";
+  // Define o texto do resultado
+  if (totalScore <= 6) {
+    resultText.textContent = "🏓 Iniciante — Você está começando! Ideal para aprender fundamentos básicos.";
+    planButton.href = "https://example.com/plano-iniciante";
+  } else if (totalScore <= 11) {
+    resultText.textContent = "⚡ Intermediário — Você já tem boas noções e pode refinar sua técnica.";
+    planButton.href = "https://example.com/plano-intermediario";
+  } else {
+    resultText.textContent = "🔥 Avançado — Seu nível é alto! Você pode se desafiar com treinos de competição.";
+    planButton.href = "https://example.com/plano-avancado";
   }
-
-  document.getElementById("resultText").innerText = resultText;
-  document.getElementById("planButton").href = planLink;
 }
